@@ -16,7 +16,9 @@ class NewsService {
 
         http.get(`${this._apiUrl}/top-headlines?country=${country}&category=${category}&apiKey=${this._apiKey}`, callback);
     }
-    serchNews(text) {
-        
+    serchNews(text, callback) {
+        const http = new Http();
+
+        http.get(`${this._apiUrl}/top-headlines?q=${text}&apiKey=${this._apiKey}`, callback);
     }
 }

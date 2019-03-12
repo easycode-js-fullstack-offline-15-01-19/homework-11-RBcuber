@@ -12,12 +12,24 @@ class NewsUIService {
         this._container.innerHTML = '';
     }
 
+    newsNotFound() {
+        const nonews = this._newsNotFound();
+        this._container.insertAdjacentHTML('afterbegin', nonews);
+    }
+
+    _newsNotFound() {
+        return `
+            <div style="color: #000; text-align: center; font-size: 24px; font-weight: 500;">
+                Новости не найдены
+            </div>
+        `;
+    }
     _newsTemplate({urlToImage, url, title, description}) {
         return `
         <div class="col s12 m6">
             <div class="card">
             <div class="card-image">
-                <img src="${urlToImage}" alt="${title || ''}">
+                <img src="${urlToImage || ''}" alt="${title || ''}">
             </div>
             <div class="card-content">
                 <span class="card-title">${title || ''}</span>
